@@ -16,3 +16,32 @@
 - after exec in container ![5 2](https://user-images.githubusercontent.com/116673091/216733866-ba39589b-a707-400b-9577-1677188ee89f.png)
 - output from jenkins ![5 3](https://user-images.githubusercontent.com/116673091/216733896-a05af7e4-c77c-43e0-9ac4-c5f299070225.png)
 ---
+### 6-  create declarative in jenkins GUI pipeline for your own repo to do "ls"
+- script
+``` bash 
+pipeline {
+    agent any
+    stages {
+        stage('List Files') {
+            steps {
+                sh 'ls'
+                echo 'job done'
+            }
+        }
+    }
+}
+```
+- screen shot from output ![eee](https://user-images.githubusercontent.com/116673091/216734836-1b46b92c-d66f-401c-b330-46aa0e58be47.png)
+---
+### 7- create scripted in jenkins GUI pipeline for your own repo to do "ls"
+-script 
+```bash
+node {
+    stage('List Files') {
+        sh 'ls'
+        echo 'job done scripted way'
+    }
+}
+```
+- screenshot from output ![777](https://user-images.githubusercontent.com/116673091/216736000-879876e4-fce3-4214-bf6e-d763a66cc0ce.png)
+
