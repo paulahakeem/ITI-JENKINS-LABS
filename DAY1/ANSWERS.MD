@@ -44,4 +44,7 @@ node {
 }
 ```
 - screenshot from output ![777](https://user-images.githubusercontent.com/116673091/216736000-879876e4-fce3-4214-bf6e-d763a66cc0ce.png)
+---
+### 8- create the same with jenkinsfile in your branches as multibranch pipeline
+![2](https://user-images.githubusercontent.com/116673091/216739566-bf822539-268e-434e-8fe2-2bbc9d2f62cc.png)
 
