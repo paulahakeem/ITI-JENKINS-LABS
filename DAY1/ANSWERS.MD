@@ -47,4 +47,28 @@ node {
 ---
 ### 8- create the same with jenkinsfile in your branches as multibranch pipeline
 ![2](https://user-images.githubusercontent.com/116673091/216739566-bf822539-268e-434e-8fe2-2bbc9d2f62cc.png)
+---
+### 9- configure jenkins image to run docker commands on your host docker deamon
+i used this to installl docker deamon in jenkins image
+``` Dockerfile
+# Use the official Jenkins image as the base image 
+FROM jenkins/jenkins:lts 
+ 
+# Install the Docker CE in the Jenkins container 
+USER root 
+RUN apt-get update && apt-get install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common 
+RUN curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add - 
+RUN add-apt-repository \ 
+    "deb [arch=amd64] https://download.docker.com/linux/debian \ 
+    $(lsb_release -cs) \ 
+    stable" 
+RUN apt-get update && apt-get install -y docker-ce 
+ 
+RUN usermod -aG docker jenkins
+```
+---
+### 10- create CI/CD for this repo https://github.com/mahmoud254/jenkins_nodejs_example.git
+- screenshot from Console Output ![jenklab](https://user-images.githubusercontent.com/116673091/217446793-408ff62c-6e34-49a8-b1ce-88f42dd88534.png)
+- screenshot from jenkins ui ![de](https://user-images.githubusercontent.com/116673091/217447136-226898e0-a802-4ef5-82bf-091f9f6d7650.png)
+- screenshot from browser ![dd](https://user-images.githubusercontent.com/116673091/217446950-e4f31946-bf5e-424b-a9f9-893837f10c62.png)
 
