@@ -71,4 +71,46 @@ RUN usermod -aG docker jenkins
 - screenshot from Console Output ![jenklab](https://user-images.githubusercontent.com/116673091/217446793-408ff62c-6e34-49a8-b1ce-88f42dd88534.png)
 - screenshot from jenkins ui ![de](https://user-images.githubusercontent.com/116673091/217447136-226898e0-a802-4ef5-82bf-091f9f6d7650.png)
 - screenshot from browser ![dd](https://user-images.githubusercontent.com/116673091/217446950-e4f31946-bf5e-424b-a9f9-893837f10c62.png)
-
+---
+### 11- create docker file to build image for jenkins slave
+Dockerfile 
+```Dockerfile
+FROM ubuntu:20.04
+RUN apt-get update -qq
+RUN apt install openjdk-11-jdk -y
+## install ssh
+RUN apt-get install openssh-server -y
+RUN service ssh start
+#install docker client
+RUN apt-get update -y
+RUN apt-get install -qq apt-transport-https ca-certificates  curl  gnupg lsb-release
+RUN mkdir -p /etc/apt/keyrings
+RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+RUN echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null
+RUN apt-get update && apt-get install -y docker-ce 
+###########################################################################
+RUN mkdir /jenkins
+RUN chmod 777 jenkins
+WORKDIR /jenkins
+CMD [ "/bin/bash" ]
+```
+---
+### 12- create container from this image 
+```bash
+docker run -it -d -v /var/run/docker.sock:/var/run/docker.sock [image_name_after_build]
+```
+--
+## and configure ssh
+```bash
+docker exec -it [containerID] bash
+ssh-keygen
+cd ./.ssh
+cp id_rsa.pub authorized-keys 
+```
+---
+### 13- from jenkins master create new node with the slave container
+- screenshot from nodes page![22](https://user-images.githubusercontent.com/116673091/217757750-b2500a64-a5db-4c32-8c57-224071425f39.png)
+- screenshot from logs page ![ccc](https://user-images.githubusercontent.com/116673091/217757890-b1e1eddd-fa0a-4795-8b56-c7b1737e08c8.png)
+---
