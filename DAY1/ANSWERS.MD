@@ -101,7 +101,7 @@ CMD [ "/bin/bash" ]
 ```bash
 docker run -it -d -v /var/run/docker.sock:/var/run/docker.sock [image_name_after_build]
 ```
---
+---
 ## and configure ssh
 ```bash
 docker exec -it [containerID] bash
@@ -114,3 +114,10 @@ cp id_rsa.pub authorized-keys
 - screenshot from nodes page![22](https://user-images.githubusercontent.com/116673091/217757750-b2500a64-a5db-4c32-8c57-224071425f39.png)
 - screenshot from logs page ![ccc](https://user-images.githubusercontent.com/116673091/217757890-b1e1eddd-fa0a-4795-8b56-c7b1737e08c8.png)
 ---
+### 14 - integrate slack with jenkins
+- screenshot from slack![sccclack](https://user-images.githubusercontent.com/116673091/217783933-c4a6df2e-3065-4aff-b56f-6650aec46999.png)
+---
+### 15 - send slack message when stage in your pipeline is successful
+- screenshot from slack ![Screenshot from 2023-02-09 12-15-49](https://user-images.githubusercontent.com/116673091/217784173-4bd855c5-8fe2-4c9f-b6e4-7721ce60b9c6.png)
+---
+
