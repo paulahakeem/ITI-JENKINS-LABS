@@ -132,4 +132,9 @@ cp id_rsa.pub authorized-keys
 - screenshot from slack ![Screenshot from 2023-02-09 12-15-49](https://user-images.githubusercontent.com/116673091/217784173-4bd855c5-8fe2-4c9f-b6e4-7721ce60b9c6.png)
 
 ---
+### 16- install audit logs plugin and test it
+
+-screenshot ![Screenshot from 2023-02-14 08-21-13](https://user-images.githubusercontent.com/116673091/218655817-e6c98ce2-c6fb-4899-b6b3-cf39cd874073.png)
+
+---
 
