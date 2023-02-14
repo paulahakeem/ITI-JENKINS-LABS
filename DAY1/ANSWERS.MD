@@ -118,6 +118,18 @@ cp id_rsa.pub authorized-keys
 - screenshot from slack![sccclack](https://user-images.githubusercontent.com/116673091/217783933-c4a6df2e-3065-4aff-b56f-6650aec46999.png)
 ---
 ### 15 - send slack message when stage in your pipeline is successful
+```bash
+  post {
+        success {
+            slackSend(color: "#40FF00", message: "The pipeline succeeded! Here is the URL: ${BUILD_URL}. ")
+        }
+        failure {
+            slackSend(color: "#E60000", message: "The pipeline failed! Here is the URL: ${BUILD_URL}.")
+        }
+    }
+}
+```
 - screenshot from slack ![Screenshot from 2023-02-09 12-15-49](https://user-images.githubusercontent.com/116673091/217784173-4bd855c5-8fe2-4c9f-b6e4-7721ce60b9c6.png)
+
 ---
 
