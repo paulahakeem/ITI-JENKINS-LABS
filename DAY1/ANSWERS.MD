@@ -138,3 +138,8 @@ cp id_rsa.pub authorized-keys
 
 ---
 
+### 17- fork the following repo https://github.com/mahmoud254/Booster_CI_CD_Project and add dockerfile to run this django app and use github actions to build the docker image and push it to your dockerhub
+
+- screenshot ![3232](https://user-images.githubusercontent.com/116673091/218961738-f779c31b-d1d8-4996-b4bd-60ac5037f645.png)
+---
+
