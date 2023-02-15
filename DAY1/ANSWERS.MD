@@ -143,3 +143,38 @@ cp id_rsa.pub authorized-keys
 - screenshot ![3232](https://user-images.githubusercontent.com/116673091/218961738-f779c31b-d1d8-4996-b4bd-60ac5037f645.png)
 ---
 
+### 18- Create infrastructure pipeline to run terraform with jenkins
+
+```bash 
+pipeline {
+    agent any
+
+    stages {
+        stage('Clone') {
+            steps {
+                 git url:'https://github.com/paulahakeem/Terraform.git',
+                 branch:'main',
+                 credentialsId:'mygit-cred'
+            }
+        }
+        stage('terraform init') {
+            steps {
+                sh 'terraform init'
+            }
+        }
+        stage('terraform Apply') {
+            steps {
+                sh """
+                
+                terraform apply -auto-approve -no-color
+                terraform apply -auto-approve -no-color
+
+                
+            
+                """
+            }
+        }
+    }
+} 
+```
+
